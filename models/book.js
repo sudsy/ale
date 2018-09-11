@@ -26,7 +26,7 @@ const Op = Sequelize.Op;
  * A Book contains many journal entries
  */
 const Book = sequelize.define('book', {
-    name: {type: Sequelize.TEXT, unique: true},
+    name: {type: Sequelize.STRING, unique: true},
     quoteCurrency: {type: Sequelize.STRING, defaultValue: 'USD'}
 });
 
