@@ -12,9 +12,12 @@
  * License for the specific language governing permissions and limitations under the License.
  *
  */
-
-const app = require('./lib/server');
+const express = require('express');
+const app = express();
+const mountAleRoutes = require('./lib/mountAleRoutes');
 const port = process.env.ALE_PORT || 8813;
+
+mountAleRoutes(app);
 
 app.listen(port, (err) => {
     if (err) {
