@@ -16,7 +16,9 @@ module.exports = {
     Book: require('./models/book'),
     Transaction: require('./models/transaction'),
     JournalEntry: require('./models/journal'),
+    Connection: require('./models/connection'),
     express : {
         mountAleRoutes: require('./lib/mountAleRoutes')
     }
+    
 };
