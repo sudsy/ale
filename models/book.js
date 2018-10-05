@@ -79,14 +79,19 @@ Book.prototype.getJournalEntries = function(query) {
  */
 Book.prototype.getBalance = function(query, inQuoteCurrency = false) {
     query = parseQuery(this.getDataValue('id'), query);
-    const credit = inQuoteCurrency ? sequelize.literal('credit * "exchangeRate"') : sequelize.col('credit');
-    const debit = inQuoteCurrency ? sequelize.literal('debit * "exchangeRate"') : sequelize.col('debit');
+    const delim= sequelize.getDialect() == 'mysql' ? '`' : '"';
+    const credit = inQuoteCurrency ? sequelize.literal(`credit * ${delim}exchangeRate${delim}`) : sequelize.col('credit');
+    const debit = inQuoteCurrency ? sequelize.literal(`debit * ${delim}exchangeRate${delim}`) : sequelize.col('debit');
+    
     query.attributes = [
         [sequelize.fn('SUM', credit), 'creditTotal'],
         [sequelize.fn('SUM', debit), 'debitTotal'],
         [sequelize.fn('COUNT', sequelize.col('id')), 'numTransactions'],
         [sequelize.fn('MAX', sequelize.col('currency')), 'currency']
     ];
+
+    
+    
     return Transaction.findAll(query).then(result => {
         result = result.shift();
         if (!result) {
