@@ -33,7 +33,8 @@
     "async": "^2.5.0",
     "bignumber.js": "^4.0.4",
     "body-parser": "1.18.2",
-    "sequelize": "^4.11.0"
+    "sequelize": "^4.11.0",
+    "swagger-routes": "1.7.0"
   },
   "peerDependencies": {
     "express": "^4.16.2"
@@ -52,7 +53,7 @@
     "cors": "^2.7.1",
     "gulp": "^3.9.1",
     "portfinder": "^1.0.3",
-    "swagger-repo": "^1.0.0",
-    "swagger-routes": "1.7.0"
+    "swagger-repo": "^1.0.0"
+    
   }
 }
