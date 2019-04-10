@@ -250,6 +250,16 @@ paths:
         in: query
         type: boolean
         required: false
+      - name: startDate
+        in: query
+        description: 'The start date for entries'
+        required: false
+        type: string
+      - name: endDate
+        in: query
+        description: 'The end date for entries'
+        required: false
+        type: string
       produces:
         - application/json
       responses: # list of responses
