@@ -110,7 +110,7 @@ Book.prototype.getBalance = function(query, inQuoteCurrency = false) {
             currency: inQuoteCurrency ? this.quoteCurrency : result.get('currency'),
             numTransactions: +result.get('numTransactions')
         };
-    });
+    }).finally(() => sequelize.close());
 };
 
 /**
