@@ -219,6 +219,12 @@ paths:
         required: false
         type: integer
 
+      - name: newestFirst
+        in: query
+        description: 'If true (default - false), sort list with newest entries at the beginning'
+        required: false
+        type: boolean
+
       produces:
         - application/json
       responses: # list of responses
