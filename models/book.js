@@ -143,7 +143,6 @@ Book.prototype.getLedger = function(query) {
 Book.prototype.getTransactions = function(query) {
     query = parseQuery(this.get('id'), query);
     query.order = query.order || [['timestamp', 'ASC']];
-    query.include = query.includeJournal || [ JournalEntry ]
     return Transaction.findAll(query);
 };
 
