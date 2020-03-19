@@ -251,7 +251,7 @@ function parseQuery(id, query) {
         delete query.account;
     }
     
-    if(query.includeMemo){
+    if(query.includeMemo == true){
         parsed.include = [ JournalEntry ];
     }
 
