@@ -34,7 +34,7 @@ Transaction = sequelize.define('transaction', {
  * Return instance in native formats
  */
 Transaction.prototype.values = function() {
-    return {
+    var value = {
         id: this.getDataValue('id'),
         credit: +this.getDataValue('credit'),
         debit: +this.getDataValue('debit'),
@@ -45,6 +45,10 @@ Transaction.prototype.values = function() {
         voided: this.getDataValue('voided'),
         voidReason: this.getDataValue('voidReason'),
     };
+    if(this.JournalEntry){
+        value.memo = this.JournalEntry.memo;
+    }
+    return value;
 };
 
 // Foreign key relationships are setup in journal.js

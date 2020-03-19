@@ -225,9 +225,9 @@ paths:
         required: false
         type: boolean
 
-      - name: includeJournal
+      - name: includeMemo
         in: query
-        description: 'If true (default - false), include journal entries with transactions'
+        description: 'If true (default - false), include memo from journal entries with transactions'
         required: false
         type: boolean
 

@@ -137,7 +137,7 @@ Book.prototype.getLedger = function(query) {
  * @param query.perPage {number} Limit results to perPage
  * @param query.page {number} Return page number
  * @param query.newestFirst {boolean} Order results by desc timestamp, (default : false).
- * @param query.includeJournal {boolean} Include the details of the journal entry for each transaction
+ * @param query.includeMemo {boolean} Include the memo from the journal entry for each transaction
  * @return {Array} of Transaction
  */
 Book.prototype.getTransactions = function(query) {
@@ -251,6 +251,10 @@ function parseQuery(id, query) {
         delete query.account;
     }
     
+    if(query.includeMemo){
+        parsed.include = [ JournalEntry ];
+    }
+
     if (query.journalEntry) {
         parsed.where.journalEntry = query.journalEntry;
     }
