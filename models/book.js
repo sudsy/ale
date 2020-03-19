@@ -137,11 +137,13 @@ Book.prototype.getLedger = function(query) {
  * @param query.perPage {number} Limit results to perPage
  * @param query.page {number} Return page number
  * @param query.newestFirst {boolean} Order results by desc timestamp, (default : false).
+ * @param query.includeJournal {boolean} Include the details of the journal entry for each transaction
  * @return {Array} of Transaction
  */
 Book.prototype.getTransactions = function(query) {
     query = parseQuery(this.get('id'), query);
     query.order = query.order || [['timestamp', 'ASC']];
+    query.include = query.includeJournal || [ JournalEntry ]
     return Transaction.findAll(query);
 };
 
