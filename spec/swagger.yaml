@@ -225,6 +225,12 @@ paths:
         required: false
         type: boolean
 
+      - name: includeJournal
+        in: query
+        description: 'If true (default - false), include journal entries with transactions'
+        required: false
+        type: boolean
+
       produces:
         - application/json
       responses: # list of responses
